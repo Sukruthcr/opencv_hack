@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parking Lot</title>
+</head>
+<body>
+    <h1>Find a Parking Slot</h1>
+    <form action="{{ url_for('find_seat') }}" method="post">
+       
+        <input type="text" id="username" hidden value="nithin" name="username"><br><br>
+        
+        <input type="text" id="user_id" hidden value="123" name="user_id"><br><br>
+        <input type="submit" value="Find Seat">
+    </form>
+
+    <table>
+        {% for row in parking %}
+            <tr>
+                {% for slot in row %}
+                    <td>
+                        {% if slot %}
+                       Occupied
+                    <!-- {% elif slot== 'selected'  %} 
+                          Processing... -->
+                    {% else %}
+                        Empty
+                    {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>
